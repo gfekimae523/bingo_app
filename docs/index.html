@@ -56,6 +56,8 @@
     </div>
 
     <audio id="drumroll-sound" src="drumroll.mp3"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+
 
     <script>
         const numberDisplay = document.getElementById('current-number');
@@ -103,6 +105,24 @@
                     numberDisplay.textContent = randomNum;
                     drawnNumbers.add(randomNum);
 
+                    confetti({
+                        particleCount: 120, 
+                        angle: 80, 
+                        spread: 40, 
+                        origin: {
+                            x: 0.05, 
+                            y: 0.8
+                        }
+                    });
+                    confetti({
+                        particleCount: 120, 
+                        angle: 100, 
+                        spread: 40, 
+                        origin: {
+                            x: 0.45, 
+                            y: 0.8
+                        }
+                    });
                     // Mark the number in the grid
                     const cell = document.getElementById(`number-${randomNum}`);
                     if (cell) {
