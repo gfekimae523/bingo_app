@@ -55,10 +55,13 @@
         </div>
     </div>
 
+    <audio id="drumroll-sound" src="drumroll.mp3"></audio>
+
     <script>
         const numberDisplay = document.getElementById('current-number');
         const drawButton = document.getElementById('draw-button');
         const numberGrid = document.getElementById('number-grid');
+        const drumrollSound = document.getElementById('drumroll-sound');
 
         // Generate numbers 1 to 75 and add to grid
         const numbers = Array.from({ length: 75 }, (_, i) => i + 1);
@@ -85,13 +88,17 @@
                 randomNum = Math.floor(Math.random() * 75) + 1;
             } while (drawnNumbers.has(randomNum));
 
+            // Play drumroll sound
+            drumrollSound.currentTime = 0;
+            drumrollSound.play();
+
             // Display a "rolling" effect
             let counter = 0;
             const interval = setInterval(() => {
                 const tempNum = Math.floor(Math.random() * 75) + 1;
                 numberDisplay.textContent = tempNum;
                 counter++;
-                if (counter > 25) { // Stop after ~2.5 seconds (10 iterations)
+                if (counter > 40) { // Stop after ~1.25 seconds (5 iterations)
                     clearInterval(interval);
                     numberDisplay.textContent = randomNum;
                     drawnNumbers.add(randomNum);
@@ -102,7 +109,7 @@
                         cell.classList.add('marked');
                     }
                 }
-            }, 100);
+            }, 50);
         });
     </script>
 </body>
