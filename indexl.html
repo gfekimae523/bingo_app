@@ -91,7 +91,7 @@
                 const tempNum = Math.floor(Math.random() * 75) + 1;
                 numberDisplay.textContent = tempNum;
                 counter++;
-                if (counter > 25) { // Stop after ~2.5 seconds (10 iterations)
+                if (counter > 20) { // Stop after ~2.5 seconds (10 iterations)
                     clearInterval(interval);
                     numberDisplay.textContent = randomNum;
                     drawnNumbers.add(randomNum);
